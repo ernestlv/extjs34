@@ -1,0 +1,171 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title id='title'>HTML Page setup Tutorial</title>
+ 
+        <!-- ** CSS ** -->
+        <!-- base library -->
+        <link rel="stylesheet" type="text/css" href="/~903205/ext34/resources/css/ext-all.css" />
+ 
+        <!-- overrides to base library -->
+ 
+ 
+        <!-- ** Javascript ** -->
+        <!-- ExtJS library: base/adapter -->
+        <script type="text/javascript" src="/~903205/ext34/adapter/ext/ext-base.js"></script>
+        <!-- ExtJS library: all widgets -->
+        <script type="text/javascript" src="/~903205/ext34/ext-all-debug.js"></script>
+ 
+ 
+        <!-- overrides to library -->
+ 
+        <!-- extensions -->
+ 
+        <!-- page specific -->
+ 
+        <script type="text/javascript">
+        // Path to the blank image should point to a valid location on your server
+        Ext.BLANK_IMAGE_URL = 'resources/images/default/s.gif';
+ 
+        Ext.onReady(function(){
+ 
+           console.info('woohoo!!!');
+var simple = new Ext.FormPanel({
+        labelWidth: 100, // label settings here cascade unless overridden
+        url:'save-form.php',
+        frame:true,
+        title: 'Super Lead Events',
+        bodyStyle:'padding:5px 5px 0',
+        width: 450,
+		id:'myForm2',
+		sni_linkMin: 3,
+		sni_linkMax: 7,
+		sni_linkCount: 3,
+		items: [{
+			xtype:'fieldset',
+			title:'Entry',
+        	defaults: {anchor: '95%', height:30},
+        	defaultType: 'textfield',
+			collapsible: true,			
+			items: [{
+					fieldLabel: 'Headline',
+					name: 'Headline',
+					allowBlank:false
+				},{
+					fieldLabel: 'Title',
+					name: 'title'
+				},{
+					fieldLabel: 'Image',
+					name: 'image'
+				},{
+					xtype: 'textarea',
+					anchor: '95%',
+					height: 70,				
+					fieldLabel: 'Description',
+					name: 'description'
+				},{
+					fieldLabel: 'Call To Action',
+					name: 'callToAction'
+				}]
+		},{
+			xtype:'fieldset',
+			title:'Entry',
+        	defaults: {anchor: '95%', height:30},
+        	defaultType: 'textfield',
+			collapsible: true,
+			collapsed: true,			
+			items: [{
+					fieldLabel: 'Headline',
+					name: 'Headline2',
+					allowBlank:false
+				},{
+					fieldLabel: 'Title',
+					name: 'title2'
+				},{
+					fieldLabel: 'Image',
+					name: 'image2'
+				},{
+					xtype: 'textarea',
+					anchor: '95%',
+					height: 70,
+					fieldLabel: 'Description',
+					name: 'description2'
+				},{
+					fieldLabel: 'Call To Action',
+					name: 'callToAction2'
+				}]
+		},{
+			xtype:'fieldset',
+			title:'Entry',
+        	defaults: {anchor: '95%', height:30},
+        	defaultType: 'textfield',
+			collapsible: true,
+			collapsed: true,						
+			items: [{
+					fieldLabel: 'Headline',
+					name: 'headline'
+				},{
+					fieldLabel: 'Link',
+					id: 'linkB1',
+					name: 'linkB1'
+				},{
+					fieldLabel: 'Link',
+					id: 'linkB2',
+					name: 'linkB2'
+				},{
+					fieldLabel: 'Link',
+					id: 'linkB3',
+					name: 'linkB3'
+				}]
+		}],
+        buttons: [{
+			text: 'Add Link',
+			id: 'addLinkBtn',
+			handler:function(b, e){
+				var form = Ext.getCmp('myForm2');
+				form.sni_linkCount++;
+				form.items.get(2).expand();
+				var x = form.items.get(2).add({fieldLabel:'Link', id:'linkB'+form.sni_linkCount, name:'linkB'+form.sni_linkCount});
+				Ext.getCmp('delLinkBtn').enable();
+				if ( form.sni_linkCount >= form.sni_linkMax ){
+					b.disable();
+				}
+				form.doLayout();	
+			}
+		},{
+			text: 'Remove Link',
+			id: 'delLinkBtn',
+			disabled:true,
+			handler:function(b, e){
+				var form = Ext.getCmp('myForm2'), field;
+			if ( form.sni_linkCount > form.sni_linkMin ){
+					form.sni_linkCount = form.sni_linkCount > form.sni_linkMax ? sni_linkMax : form.sni_linkCount;
+					field = Ext.getCmp('linkB'+form.sni_linkCount);
+					form.items.get(2).expand();
+					form.items.get(2).remove(field);
+					form.sni_linkCount--;
+					Ext.getCmp('addLinkBtn').enable();
+					if ( form.sni_linkCount <= form.sni_linkMin ){
+						b.disable();
+					}
+				}else{
+					b.disable();
+				}
+				form.doLayout();		
+			}			
+		},{
+            text: 'Save'
+        },{
+            text: 'Cancel'
+        }]
+    });
+
+    simple.render(document.body);
+ 
+        }); //end onReady
+        </script>
+ 
+    </head>
+    <body>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title id='title'>HTML Page setup Tutorial</title>
+ 
+        <!-- ** CSS ** -->
+        <!-- base library -->
+        <link rel="stylesheet" type="text/css" href="/~903205/ext34/resources/css/ext-all.css" />
+        <link rel="stylesheet" type="text/css" href="msgbox01.css" />
+ 
+        <!-- overrides to base library -->
+ 
+ 
+        <!-- ** Javascript ** -->
+        <!-- ExtJS library: base/adapter -->
+        <script type="text/javascript" src="/~903205/ext34/adapter/ext/ext-base.js"></script>
+        <!-- ExtJS library: all widgets -->
+        <script type="text/javascript" src="/~903205/ext34/ext-all-debug.js"></script>
+ 
+ 
+        <!-- overrides to library -->
+ 
+        <!-- extensions -->
+ 
+        <!-- page specific -->
+ 
+        <script type="text/javascript">
+        // Path to the blank image should point to a valid location on your server
+        Ext.BLANK_IMAGE_URL = 'resources/images/default/s.gif';
+ 
+        Ext.onReady(function(){
+ 
+           Ext.get('b1').on('click', function(e){
+			   Ext.MessageBox.alert("Alert","Hello World!!!");
+		   });
+ 
+        }); //end onReady
+        </script>
+ 
+    </head>
+    <body>
+    <button id="b1">Click Me</button>
+    </body>
+</html>

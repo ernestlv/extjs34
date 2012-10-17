@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>main screen</title>
+    <!-- ** CSS ** -->
+    <!-- base library -->
+    <link rel="stylesheet" type="text/css" href="/~903205/ext34/resources/css/ext-all.css" />
+
+    <!-- ** Javascript ** -->
+    <!-- ExtJS library: base/adapter -->
+    <script type="text/javascript" src="/~903205/ext34/adapter/ext/ext-base.js"></script>
+    <!-- ExtJS library: all widgets -->
+    <script type="text/javascript" src="/~903205/ext34/ext-all-debug.js"></script>
+
+    <!-- page specific -->
+</head>
+
+<body>
+    <script type="text/javascript">
+    // Path to blank image point to a valid location on your server
+    Ext.BLANK_IMAGE_URL = '/~903205/ext34/resources/images/default/s.gif';
+
+    Ext.onReady(function(){
+	   var starLoad = new  Date();
+       console.info('start main ...');
+       var main = new Ext.Viewport({
+		  layout:'border',
+		  items:[
+		  	//{
+			//	region:'west',
+			//	title:'Five Days of Dinner',
+			//	split:true,
+			//	collapsible:true,
+			//	width:200,
+			//	border:false,
+			//	items:[{
+			//		xtype:'propertygrid',
+			//		layout:'fit',
+			//		source:{
+			//			'Slug (Headline)':'EVERY OTHER NIGHT IN NOVEMBER',
+			//			'Title':'Five Days of Dinner',
+			//			'Image':'FNM-090111_WN-Dinners-027_s4x3 ',
+			//			'Description':'Jazz up your weeknight routine with simple recipes that will soon become staples in your home.'
+			//		}
+			//	}]
+			//},
+		  	{
+				region:'north'	,
+				xtype:'container',
+				height:300,
+				items:[{
+					xtype:'tabpanel',
+					activeTab:0,
+					items:[{
+						title:'Five Days of Dinner',
+						closable:true,
+						xtype:'tabpanel',
+						tabPosition:'bottom',
+						activeTab:1,
+						items:[{
+							title:'Properties'							
+						},{
+							title:'Preview',
+							html:'<iframe src="http://www.foodnetwork.com" width="100%" height="200" frameBorder="0"></iframe>'
+						}]
+					},{
+						title:'Food Network - Easy Recipes',
+						closable:true
+					},{
+						title:'Hungry Girl',
+						closable:true
+					}]
+				}]
+		  	},
+			{
+				region:'east',
+				title:'Five Days of Dinner - Versions',
+				collapsible:true,
+				split:true,
+				width:250,
+				layout:'fit',
+				items:{
+					xtype:'tabpanel',
+					tabPosition:'bottom',
+					activeTab:0,
+					border:false,
+					items:[{
+						title:'History'
+					},{
+						title:'Schedule'
+					}]
+				}
+			},
+			{
+				region:'center',
+				collapsible:true,
+				split:true,
+				title:'Dashboard',
+				layout: 'accordion',
+				border:false,
+				//height:300,
+				items:[{
+					title:'Modules',
+					html:'<p>Module List!</p>'	
+				},
+				{
+					title:'Sections',
+					html:'<p>Section List</p>'
+				},
+				{
+					title:'Shows',
+					html:'<p>Show List</p>'
+				}]
+			}
+		  ]
+      });
+	  console.info('end main. loading time: ' + (((new Date())-starLoad)/1000) + ' secs');
+    }); //end onReady
+    </script>  
+</body>
+</html>

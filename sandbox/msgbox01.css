@@ -1,0 +1,21 @@
+.x-window-tl, .x-window-tr, .x-window-tc{
+	background-image:none;
+	background-color:#6495ED;
+}
+.x-window-header-text{
+	color:white;
+}
+.x-window-ml, .x-window-mr{
+	background-image:none;
+	background-color:white;
+}
+
+body.x-body-masked .x-window-plain .x-window-mc{
+	background-color:white;
+}
+
+.x-window-bl, .x-window-br, .x-window-bc{
+	background-image:none;
+	background-color:white;
+}
+

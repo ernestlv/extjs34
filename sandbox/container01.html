@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>main screen</title>
+    <!-- ** CSS ** -->
+    <!-- base library -->
+    <link rel="stylesheet" type="text/css" href="/~903205/ext34/resources/css/ext-all.css" />
+
+    <!-- ** Javascript ** -->
+    <!-- ExtJS library: base/adapter -->
+    <script type="text/javascript" src="/~903205/ext34/adapter/ext/ext-base.js"></script>
+    <!-- ExtJS library: all widgets -->
+    <script type="text/javascript" src="/~903205/ext34/ext-all-debug.js"></script>
+
+    <!-- page specific -->
+</head>
+
+<body>
+        <script type="text/javascript">
+        // Path to the blank image should point to a valid location on your server
+        Ext.BLANK_IMAGE_URL = 'resources/images/default/s.gif';
+ 
+        Ext.onReady(function(){
+ 
+           console.info('woohoo!!!');
+		   var panel = new Ext.Container({
+			  title: 'My Panel',
+			  html: 'hello world!',
+			  renderTo: Ext.getBody(),
+			  layout:'fit'
+		  });
+ 
+        }); //end onReady
+        </script> 
+</body>
+</html>

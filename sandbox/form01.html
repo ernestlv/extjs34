@@ -1,0 +1,131 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title id='title'>HTML Page setup Tutorial</title>
+ 
+        <!-- ** CSS ** -->
+        <!-- base library -->
+        <link rel="stylesheet" type="text/css" href="/~903205/ext34/resources/css/ext-all.css" />
+ 
+        <!-- overrides to base library -->
+ 
+ 
+        <!-- ** Javascript ** -->
+        <!-- ExtJS library: base/adapter -->
+        <script type="text/javascript" src="/~903205/ext34/adapter/ext/ext-base.js"></script>
+        <!-- ExtJS library: all widgets -->
+        <script type="text/javascript" src="/~903205/ext34/ext-all-debug.js"></script>
+ 
+ 
+        <!-- overrides to library -->
+ 
+        <!-- extensions -->
+ 
+        <!-- page specific -->
+ 
+        <script type="text/javascript">
+        // Path to the blank image should point to a valid location on your server
+        Ext.BLANK_IMAGE_URL = 'resources/images/default/s.gif';
+ 
+        Ext.onReady(function(){
+ 
+           console.info('woohoo!!!');
+var simple = new Ext.FormPanel({
+        labelWidth: 100, // label settings here cascade unless overridden
+        url:'save-form.php',
+        frame:true,
+        title: 'Title Image Link',
+        bodyStyle:'padding:5px 5px 0',
+        width: 450,
+		id:'myForm',
+		sni_linkMin: 3,
+		sni_linkMax: 7,
+		sni_linkCount: 3,
+		items: [{
+			xtype:'fieldset',
+			id:'sni_fieldset',
+			title:'Title Image Link',
+        	defaults: {width: 300},
+        	defaultType: 'textfield',			
+			items: [{
+					fieldLabel: 'Title',
+					name: 'Title',
+					allowBlank:false
+				},{
+					fieldLabel: 'Feature Image',
+					name: 'image'
+				},{
+					fieldLabel: 'Link',
+					id: 'link1',
+					name: 'link1'
+				},{
+					fieldLabel: 'Link',
+					id: 'link2',
+					name: 'link2'
+				},{
+					fieldLabel: 'Link',
+					id: 'link3',
+					name: 'link3'
+				}]
+		}],
+        buttons: [{
+			text: 'Add Link',
+			id: 'addLinkBtn',
+			handler:function(b, e){
+				var form = Ext.getCmp('myForm');
+				form.sni_linkCount++;
+				var x = form.items.get(0).add({fieldLabel:'Link', id:'link'+form.sni_linkCount, name:'link'+form.sni_linkCount});
+				Ext.getCmp('delLinkBtn').enable();
+				if ( form.sni_linkCount >= form.sni_linkMax ){
+					b.disable();
+				}
+				form.doLayout();	
+			}
+		},{
+			text: 'Remove Link',
+			id: 'delLinkBtn',
+			disabled:true,
+			handler:function(b, e){
+				var form = Ext.getCmp('myForm'), field;
+			if ( form.sni_linkCount > form.sni_linkMin ){
+					form.sni_linkCount = form.sni_linkCount > form.sni_linkMax ? sni_linkMax : form.sni_linkCount;
+					field = Ext.getCmp('link'+form.sni_linkCount);
+					form.items.get(0).remove(field);
+					form.sni_linkCount--;
+					Ext.getCmp('addLinkBtn').enable();
+					if ( form.sni_linkCount <= form.sni_linkMin ){
+						b.disable();
+					}
+				}else{
+					b.disable();
+				}
+				form.doLayout();		
+			}			
+		},{
+            text: 'Save',
+			handler: function(){
+				var form = Ext.getCmp('myForm');
+				form.getForm().submit({
+					url:'http://10.44.61.7:4502/content/',
+					success:function(){
+						Ext.Msg.alert('Success');
+					},
+					failure:function(){
+						Ext.Msg.alert('Success');
+					}	
+				});
+			}
+        },{
+            text: 'Cancel'
+        }]
+    });
+
+    simple.render(document.body);
+ 
+        }); //end onReady
+        </script>
+ 
+    </head>
+    <body>
+    </body>
+</html>

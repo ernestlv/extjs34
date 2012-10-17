@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title id='title'>HTML Page setup Tutorial</title>
+ 
+        <!-- ** CSS ** -->
+        <!-- base library -->
+        <link rel="stylesheet" type="text/css" href="/~903205/ext34/resources/css/ext-all.css" />
+ 
+        <!-- overrides to base library -->
+ 
+ 
+        <!-- ** Javascript ** -->
+        <!-- ExtJS library: base/adapter -->
+        <script type="text/javascript" src="/~903205/ext34/adapter/ext/ext-base.js"></script>
+        <!-- ExtJS library: all widgets -->
+        <script type="text/javascript" src="/~903205/ext34/ext-all-debug.js"></script>
+ 
+ 
+        <!-- overrides to library -->
+ 
+        <!-- extensions -->
+ 
+        <!-- page specific -->
+ 
+        <script type="text/javascript">
+        // Path to the blank image should point to a valid location on your server
+        Ext.BLANK_IMAGE_URL = 'resources/images/default/s.gif';
+ 
+        Ext.onReady(function(){
+ 
+           console.info('woohoo!!!');
+		   var panel = new Ext.Panel({
+			  title: 'My Panel',
+			  width: 500,
+			  height: 300,
+			  renderTo: Ext.getBody(),
+			  layout:'fit',
+			  items:[
+				  new Ext.grid.PropertyGrid({
+							title: 'History',
+							source: {
+								"(name)": "Properties Grid",
+								"grouping": false,
+								"autoFitColumns": true,
+								"productionQuality": false,
+								"created": new Date(Date.parse('10/15/2006')),
+								"tested": false,
+								"version": 0.01,
+								"borderWidth": 1
+							}
+					 })
+			  ]
+		  });
+ 			new Ext.grid.PropertyGrid({
+							title: 'History',
+							renderTo: Ext.getBody(),
+							layout:'fit',
+							source: {
+								"prop1":"value1",
+								"prop2":"value2"
+								
+							}
+					 });
+        }); //end onReady
+        </script>
+ 
+    </head>
+    <body>
+    </body>
+</html>

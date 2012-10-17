@@ -1,0 +1,10 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.x-panel-header {
+    background: #EE7621 no-repeat 0 -1px;
+}
+
+.x-panel-header-text {
+	color: white;
+}
